@@ -1,0 +1,26 @@
+<section data-ng-controller="JobsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="job.title"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="authentication.user._id == job.user._id">
+		<a class="btn btn-primary" href="/#!/jobs/{{job._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	<div class="job-info">
+		<p data-ng-bind="job.description"></p>
+		<ul>
+			<li><strong>Listing Date:</strong> <span data-ng-bind="job.created | date:'mediumDate'"></span></li>
+			<li><strong>Job Poster:</strong> <span data-ng-bind="job.user.displayName"></span></li>
+			<li><strong>Company Name:</strong> <span data-ng-bind="job.company"></span></li>
+			<li><strong>Hourly Wage:</strong> <span data-ng-bind="job.hourly_wage"></span></li>
+			<li><strong>Requirements:</strong> <span data-ng-bind="job.requirements"></span></li>
+			<li><strong>Contact Email:</strong> <a href="mailto:{{job.contact_email}}"><span data-ng-bind="job.contact_email"></span></a></li>
+		</ul>
+	</div>
+    <br><br>
+    <a href="/#!/jobs">Go Back</a>
+</section>
